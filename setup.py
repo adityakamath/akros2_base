@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 from glob import glob
 
-package_name = 'akros2_navigation'
+package_name = 'akros2_base'
 
 setup(
     name=package_name,
@@ -21,7 +21,7 @@ setup(
     zip_safe=True,
     maintainer='Aditya Kamath',
     maintainer_email='adityakamath@live.com',
-    description='AKROS2 navigation files including sensor fusion and localization',
+    description='AKROS2 base files for sensor drivers, filters and fusion',
     license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={

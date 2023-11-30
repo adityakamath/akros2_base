@@ -1,0 +1,12 @@
+laser_filter:
+  ros__parameters:
+    filter1:
+      name: range_filter
+      type: laser_filters/LaserScanRangeFilter
+      params:
+        use_message_range_limits: false
+        lower_threshold: 0.0
+        upper_threshold: 15.0
+    filter2:
+      name: interpolation
+      type: laser_filters/InterpolationFilter

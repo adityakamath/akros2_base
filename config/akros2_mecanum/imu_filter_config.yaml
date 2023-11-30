@@ -8,7 +8,7 @@ imu_filter:
     constant_dt: 0.0
     publish_debug_topics: false
     world_frame: "enu"
-    remove_gravity_vector: false
+    remove_gravity_vector: true
     gain: 0.1
     zeta: 0.0
     mag_bias_x: 0.0
