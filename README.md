@@ -8,3 +8,9 @@ This is the launch file for running sensor fusion related nodes. Currently, this
 This launch file runs the [ldlidar](https://github.com/linorobot/ldlidar) and [laser_filters](https://github.com/ros-perception/laser_filters) packages. It has only one launch argument:
 
 * ```laser_filter```: Enable/Disable the LIDAR filter chain (Default: ```True```)
+
+## camera_launch.py
+This launch file runs the [v4l2_camera](https://gitlab.com/boldhearts/ros2_v4l2_camera) packages. It has two launch arguments:
+
+* ```ns```: Namespace of the system (Default: ```''```)
+* ```config```: Select robot platform. Currently, the camera is only used on the mecanum platform (Default: ```mecanum```)

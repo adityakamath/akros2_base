@@ -36,8 +36,14 @@ def generate_launch_description():
             name='config',
             default_value='mecanum',
             description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
+
+        DeclareLaunchArgument(
+            name='imu_filter',
+            default_value='True',
+            description='Enable IMU Madgwick Filter'),
         
         Node(
+            condition=IfCondition(LaunchConfiguration('imu_filter')),
             package='imu_filter_madgwick',
             executable='imu_filter_madgwick_node',
             name='imu_filter',
