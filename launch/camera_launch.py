@@ -18,12 +18,7 @@ def generate_launch_description():
                                       LaunchConfiguration('config'), 
                                       '/camera_info.yaml']
     
-    return LaunchDescription([
-        DeclareLaunchArgument(
-            name='ns',
-            default_value='',
-            description='Namespace of the system'),
-        
+    return LaunchDescription([   
         DeclareLaunchArgument(
             name='config',
             default_value='mecanum',
@@ -32,7 +27,7 @@ def generate_launch_description():
         ComposableNodeContainer(
             condition=LaunchConfigurationEquals('config', 'mecanum'),
             name='camera_container',
-            namespace=LaunchConfiguration('ns'),
+            namespace='',
             package='rclcpp_components',
             executable='component_container',
             output='screen',
@@ -41,7 +36,7 @@ def generate_launch_description():
                     package='v4l2_camera',
                     plugin='v4l2_camera::V4L2Camera',
                     name='camera_node',
-                    namespace=LaunchConfiguration('ns'),
+                    namespace='',
                     parameters=[{'camera_info_url': camera_info_dynamic_path},
                                 camera_config_dynamic_path],
                     extra_arguments=[{'use_intra_process_comms': True}],

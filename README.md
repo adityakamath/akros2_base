@@ -10,7 +10,6 @@ This launch file runs the [ldlidar](https://github.com/linorobot/ldlidar) and [l
 * ```laser_filter```: Enable/Disable the LIDAR filter chain (Default: ```True```)
 
 ## camera_launch.py
-This launch file runs the [v4l2_camera](https://gitlab.com/boldhearts/ros2_v4l2_camera) packages. It has two launch arguments:
+This launch file runs the [v4l2_camera](https://gitlab.com/boldhearts/ros2_v4l2_camera) packages. It has one launch argument:
 
-* ```ns```: Namespace of the system (Default: ```''```)
 * ```config```: Select robot platform. Currently, the camera is only used on the mecanum platform (Default: ```mecanum```)
