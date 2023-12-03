@@ -1,6 +1,6 @@
 camera_node:
   ros__parameters:
-    video_device: /dev/video0
+    video_device: /dev/videoUSBCAM
     camera_frame_id: cam_frame
     pixel_format: YUYV
     output_encoding: rgb8
