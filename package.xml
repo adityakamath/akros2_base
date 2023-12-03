@@ -14,6 +14,8 @@
     
   <depend>laser_filters</depend>
   <depend>ldlidar</depend>
+    
+  <depend>v4l2_camera</depend>
 
   <depend>imu_filter_madgwick</depend>
   <depend>robot_localization</depend>

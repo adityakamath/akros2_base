@@ -1,0 +1,12 @@
+camera_node:
+  ros__parameters:
+    video_device: /dev/video0
+    camera_frame_id: cam_frame
+    pixel_format: YUYV
+    output_encoding: rgb8
+    image_size: [640, 480]
+    time_per_frame: [1, 30]
+    use_v4l2_buffer_timestamps: true
+    timestamp_offset: 0
+    use_sensor_data_qos: false
+    publish_rate: -1.0
