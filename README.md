@@ -12,4 +12,4 @@ This launch file runs the [ldlidar](https://github.com/linorobot/ldlidar) and [l
 ## camera_launch.py
 This launch file runs the [v4l2_camera](https://gitlab.com/boldhearts/ros2_v4l2_camera) packages. It has one launch argument:
 
-* ```config```: Select robot platform. Currently, the camera is only used on the mecanum platform (Default: ```mecanum```)
+* ```compose```: If True, launches the camera node as a composable container. If False, runs the node normally. The normal method also publishes compressed image data. However, with the composable container, the compressed image plugins are not used by default (WIP) (Default: ```False```)

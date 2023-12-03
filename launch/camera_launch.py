@@ -16,8 +16,8 @@ import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
-from launch.conditions import LaunchConfigurationEquals
-from launch_ros.actions import ComposableNodeContainer
+from launch.conditions import IfCondition, UnlessCondition, LaunchConfigurationEquals
+from launch_ros.actions import Node, ComposableNodeContainer
 from launch_ros.descriptions import ComposableNode
 from ament_index_python.packages import get_package_share_directory
 
@@ -34,12 +34,21 @@ def generate_launch_description():
     
     return LaunchDescription([   
         DeclareLaunchArgument(
-            name='config',
-            default_value='mecanum',
-            description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
+            name='compose',
+            default_value='False',
+            description='Select whether to run normally or in a composable container'),
+
+        Node(
+            condition=UnlessCondition(LaunchConfiguration('compose')),
+            package='v4l2_camera',
+            executable='v4l2_camera_node',
+            name='camera_node',
+            output='screen',
+            parameters=[{'camera_info_url': camera_info_dynamic_path},
+                        camera_config_dynamic_path]),
 
         ComposableNodeContainer(
-            condition=LaunchConfigurationEquals('config', 'mecanum'),
+            condition=IfCondition(LaunchConfiguration('compose')),
             name='camera_container',
             namespace='',
             package='rclcpp_components',
@@ -55,7 +64,6 @@ def generate_launch_description():
                                 camera_config_dynamic_path],
                     extra_arguments=[{'use_intra_process_comms': True}],
                 ),
-            ],
-        ),
+            ]),
     ])
 
