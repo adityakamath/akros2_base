@@ -32,7 +32,12 @@ def generate_launch_description():
                                       LaunchConfiguration('config'), 
                                       '/camera_info.yaml']
     
-    return LaunchDescription([   
+    return LaunchDescription([
+        DeclareLaunchArgument(
+            name='config',
+            default_value='mecanum',
+            description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
+        
         DeclareLaunchArgument(
             name='compose',
             default_value='False',
