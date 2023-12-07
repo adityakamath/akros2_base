@@ -17,6 +17,8 @@
     
   <depend>v4l2_camera</depend>
   <depend>image_transport_plugins</depend> 
+    
+  <depend>micro_ros_agent</depend>
 
   <depend>imu_filter_madgwick</depend>
   <depend>robot_localization</depend>
