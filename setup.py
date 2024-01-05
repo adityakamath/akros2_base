@@ -29,6 +29,7 @@ setup(
         'console_scripts': [
             'joy_mode_handler = akros2_base.joy_mode_handler:main',
             'twist_mixer = akros2_base.twist_mixer_node:main',
+            'drive_node = akros2_base.drive_node:main'
         ],
     },
 )
