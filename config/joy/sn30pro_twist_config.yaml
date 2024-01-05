@@ -1,0 +1,19 @@
+joy_teleop:
+  ros__parameters:
+    axis_linear:
+      x: 1 # LJoy front/back (Android Mode)
+      y: 0 # LJoy left/right (Android Mode)
+    scale_linear:
+      x: 0.2
+      y: 0.15
+    scale_linear_turbo:
+      x: 0.3
+      y: 0.225
+    axis_angular:
+      yaw: 2 # RJoy left/right (Android Mode)
+    scale_angular:
+      yaw: 1.57
+    scale_angular_turbo:
+      yaw: 2.0 # RJoy left/right
+    require_enable_button: false
+    enable_turbo_button: 7  # R1 shoulder button (Android Mode)

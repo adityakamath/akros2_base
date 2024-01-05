@@ -1,0 +1,4 @@
+joy_mode_handler:
+  ros__parameters:
+    estop_button: 6 # L1 shoulder button (Android Mode)
+    auto_button: 0 # A button (Android Mode)
