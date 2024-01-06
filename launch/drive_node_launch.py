@@ -14,14 +14,16 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch.conditions import LaunchConfigurationNotEquals
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
+from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
 import logging
 
-def generate_launch_description():
+def generate_launch_description():  
     joy_twist_config_dynamic_path = [get_package_share_directory('akros2_base'), 
                                      '/config/joy/', 
                                      LaunchConfiguration('joy_config'), 
@@ -32,12 +34,25 @@ def generate_launch_description():
                                     LaunchConfiguration('joy_config'), 
                                     '_mode_config.yaml']
     
-    return LaunchDescription([
+    return LaunchDescription([        
         DeclareLaunchArgument(
             name='joy_config',
             default_value='steamdeck',
             description='Select Controller: ps4 (PS4/DS4), stadia (Google Stadia), sn30pro (8BitDo SN30 Pro), steamdeck (Valve Steam Deck), none (Disabled)'),
-
+        
+        Node(
+            condition=LaunchConfigurationNotEquals('joy_config', 'none'),
+            package='akros2_base',
+            executable='drive_node',
+            output='screen',
+            parameters=[{'timer_period': 0.02},
+                        joy_mode_config_dynamic_path],
+            remappings=[
+                ('/teleop_vel', '/joy_vel'),
+                ('/auto_vel', '/nav_vel'),
+                ('/mix_vel', '/cmd_vel'),
+            ]),
+        
         Node(
             condition=LaunchConfigurationNotEquals('joy_config', 'none'),
             package='joy',
@@ -60,12 +75,4 @@ def generate_launch_description():
             remappings=[
                 ('/cmd_vel', '/joy_vel')
             ]),
-        
-        Node(
-            condition=LaunchConfigurationNotEquals('joy_config', 'none'),
-            package='akros2_base',
-            executable='joy_mode_handler',
-            name='joy_mode_handler',
-            output='screen',
-            parameters=[joy_mode_config_dynamic_path]),
     ])

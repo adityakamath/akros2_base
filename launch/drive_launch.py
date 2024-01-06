@@ -16,27 +16,21 @@ import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
-from launch.conditions import IfCondition
+from launch.conditions import LaunchConfigurationNotEquals
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
-from ament_index_python.packages import get_package_share_directory
 import logging
 
 def generate_launch_description():
     joy_launch_path = PathJoinSubstitution(
         [FindPackageShare('akros2_base'), 'launch', 'joy_launch.py'])
     
-    return LaunchDescription([
-        DeclareLaunchArgument(
-            name='joy',
-            default_value='True',
-            description='Enable Joy and Teleop Twist Joy nodes'),
-        
+    return LaunchDescription([        
         DeclareLaunchArgument(
             name='joy_config',
             default_value='steamdeck',
-            description='Joystick Configuration: ps4, stadia, sn30pro, steamdeck'),
+            description='Select Controller: ps4 (PS4/DS4), stadia (Google Stadia), sn30pro (8BitDo SN30 Pro), steamdeck (Valve Steam Deck), none (Disabled)'),
         
         Node(
             package='akros2_base',
@@ -52,6 +46,6 @@ def generate_launch_description():
         
         IncludeLaunchDescription(
             PythonLaunchDescriptionSource(joy_launch_path),
-            condition=IfCondition(LaunchConfiguration('joy')),
+            condition=LaunchConfigurationNotEquals('joy_config', 'none'),
             launch_arguments={'joy_config': LaunchConfiguration('joy_config')}.items()),
     ])
