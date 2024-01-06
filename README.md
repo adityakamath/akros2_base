@@ -13,17 +13,10 @@ All the nodes from the [akros2_drive](https://github.com/adityakamath/akros2_dri
 The following launch files are provided in this package:
 
 ### drive_launch.py
-This is the main drive launch file that runs the ```twist_mixer``` executable and ```joy_launch.py``` if the joystick is enabled:
-
-* ```joy_config```: Configures one of the following joystick mappings for launching related packages (Default: ```steamdeck```): 
-    * ```ps4```: [PS4](https://www.playstation.com/nl-nl/accessories/dualshock-4-wireless-controller/)/DS4 Controller
-    * ```stadia```: [Google Stadia](https://stadia.google.com/controller/) Controller
-    * ```sn30pro``` [8BitDo SN30 Pro](https://www.8bitdo.com/sn30-pro-g-classic-or-sn30-pro-sn/) Controller
-    * ```steamdeck```: [Valve Steam Deck](https://store.steampowered.com/steamdeck)
-    * ```none```: Disabled
+This is the main drive launch file that runs the ```twist_mixer``` executable by itself. Parameter and Topic remappings are done in the launch file and there no launch arguments.
     
 ### joy_launch.py
-This launch files launches the ```joy```, ```teleop_twist_joy``` and ```joy_mode_handler``` nodes and uses the ```joy_config``` launch argument to configure the controller. This node can be launched individually or via ```drive_launch.py``` by enabling the joystick using the ```joy_config``` launch argument. Parameters for ```teleop_twist_joy``` and ```joy_mode_handler``` are set using the ```_twist_config.yaml``` and ```_mode_config.yaml``` configs respectively (located in ```config/joy/```).
+This launch files launches the ```joy```, ```teleop_twist_joy``` and ```joy_mode_handler``` nodes and uses the ```joy_config``` launch argument to configure the controller. Parameters for ```teleop_twist_joy``` and ```joy_mode_handler``` are set using the ```_twist_config.yaml``` and ```_mode_config.yaml``` configs respectively (located in ```config/joy/```).
 
 ### drive_node_launch.py
 This is a combination of the ```drive_launch.py``` and ```joy_launch.py```, and all the nodes are launched from the same file. Only difference here is that instead of launching ```twist_mixer``` and ```joy_mode_handler``` separately, ```drive_node``` is now launched, which uses a multi-threaded executor. This is the preferred option when the joystick is not remote, but instead connected directly to the robot (currently only used for testing). The launch arguments and parameters are the same as ```joy_launch.py```.
