@@ -12,16 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 from launch import LaunchDescription
 from launch_ros.actions import Node
-import logging
 
 def generate_launch_description():
-    
+
     return LaunchDescription([
         Node(
-            package='akros2_base',
+            package='akros2_drive',
             executable='twist_mixer',
             name='twist_mixer',
             output='screen',

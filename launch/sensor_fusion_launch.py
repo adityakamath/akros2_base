@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import LaunchConfiguration
@@ -21,17 +20,17 @@ from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
-    
-    imu_filter_config_dynamic_path = [get_package_share_directory('akros2_base'), 
-                                      '/config/akros2_', 
-                                      LaunchConfiguration('config'), 
+
+    imu_filter_config_dynamic_path = [get_package_share_directory('akros2_base'),
+                                      '/config/akros2_',
+                                      LaunchConfiguration('config'),
                                       '/imu_filter_config.yaml']
-    
-    ekf_config_dynamic_path = [get_package_share_directory('akros2_base'), 
-                               '/config/akros2_', 
-                               LaunchConfiguration('config'), 
+
+    ekf_config_dynamic_path = [get_package_share_directory('akros2_base'),
+                               '/config/akros2_',
+                               LaunchConfiguration('config'),
                                '/ekf_config.yaml']
-    
+
     return LaunchDescription([
         DeclareLaunchArgument(
             name='config',
@@ -42,7 +41,7 @@ def generate_launch_description():
             name='imu_filter',
             default_value='True',
             description='Enable IMU Madgwick Filter'),
-        
+
         Node(
             condition=IfCondition(LaunchConfiguration('imu_filter')),
             package='imu_filter_madgwick',
@@ -53,7 +52,7 @@ def generate_launch_description():
             remappings=[
                 ('/imu/data_raw', '/imu'),
                 ('/imu/data', '/imu/filtered')]),
-        
+
         Node(
             package='robot_localization',
             executable='ekf_node',

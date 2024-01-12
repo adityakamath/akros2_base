@@ -12,20 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction
 from launch.substitutions import LaunchConfiguration
 from launch.conditions import LaunchConfigurationEquals
 from launch_ros.actions import Node
 
-def generate_launch_description():       
-    return LaunchDescription([ 
+def generate_launch_description():
+    return LaunchDescription([
         DeclareLaunchArgument(
             name='config',
             default_value='mecanum',
             description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
-        
+
         Node(
             condition=LaunchConfigurationEquals('config', 'mecanum'),
             package='micro_ros_agent',

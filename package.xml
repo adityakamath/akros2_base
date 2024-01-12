@@ -3,7 +3,7 @@
 <package format="3">
   <name>akros2_base</name>
   <version>0.0.0</version>
-  <description>AKROS2 base files for the mode handler, twist multiplexer, sensor drivers, filters and fusion</description>
+  <description>AKROS2 base files for drivers, sensors, filters and fusion</description>
   <maintainer email="adityakamath@live.com">Aditya Kamath</maintainer>
   <license>Apache License 2.0</license>
 
@@ -11,22 +11,21 @@
   <test_depend>ament_flake8</test_depend>
   <test_depend>ament_pep257</test_depend>
   <test_depend>python3-pytest</test_depend>
-    
+
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>
   <depend>geometry_msgs</depend>
   <depend>std_msgs</depend>
   <depend>akros2_msgs</depend>
-  
-  <depend>joy</depend>
-  <depend>teleop_twist_joy</depend>
-    
+
+  <depend>akros2_drive</depend>
+
   <depend>laser_filters</depend>
   <depend>ldlidar</depend>
-    
+
   <depend>v4l2_camera</depend>
-  <depend>image_transport_plugins</depend> 
-    
+  <depend>image_transport_plugins</depend>
+
   <depend>micro_ros_agent</depend>
 
   <depend>imu_filter_madgwick</depend>
