@@ -25,6 +25,3 @@ This launch file runs the [v4l2_camera](https://gitlab.com/boldhearts/ros2_v4l2_
 Launches the [micro-ROS agent](https://github.com/micro-ROS/micro-ROS-Agent) with the correct arguments based on the value of ```config```e:
 
 * ```config```: Launches specific low-level control nodes based on the configs: ```mecanum```, ```omni``` (Default: ```mecanum```)
-
-## Note
-Due to issues with launching everything together, it is recommended to launch ```camera_launch.py``` and ```control_launch.py``` on separate terminals and not from the main launch file: ```bringup_launch.py``` in [akros2_bringup](). Run ```bringup_launch.py``` with ```control:=false camera:=false```.
