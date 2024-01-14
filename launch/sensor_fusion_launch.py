@@ -30,6 +30,11 @@ def generate_launch_description():
                                '/config/akros2_',
                                LaunchConfiguration('config'),
                                '/ekf_config.yaml']
+    
+    motion_detector_config_dynamic_path = [get_package_share_directory('akros2_base'),
+                                           '/config/akros2_',
+                                           LaunchConfiguration('config'),
+                                           '/motion_detector_config.yaml']
 
     return LaunchDescription([
         DeclareLaunchArgument(
@@ -37,13 +42,7 @@ def generate_launch_description():
             default_value='mecanum',
             description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
 
-        DeclareLaunchArgument(
-            name='imu_filter',
-            default_value='True',
-            description='Enable IMU Madgwick Filter'),
-
         Node(
-            condition=IfCondition(LaunchConfiguration('imu_filter')),
             package='imu_filter_madgwick',
             executable='imu_filter_madgwick_node',
             name='imu_filter',
@@ -52,6 +51,14 @@ def generate_launch_description():
             remappings=[
                 ('/imu/data_raw', '/imu'),
                 ('/imu/data', '/imu/filtered')]),
+        
+        Node(
+            package='akros2_base',
+            executable='motion_detector',
+            name='motion_detector',
+            output='screen',
+            parameters=[motion_detector_config_dynamic_path],
+            remappings=[('/imu', '/imu/filtered')]),
 
         Node(
             package='robot_localization',
