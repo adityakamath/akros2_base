@@ -1,0 +1,5 @@
+motion_detector:
+  ros__parameters:
+    angular_x_threshold: 0.05
+    angular_y_threshold: 0.05
+    angular_z_threshold: 0.05

@@ -35,7 +35,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             name='config',
             default_value='mecanum',
-            description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled)'),
+            description='Select Robot Config: mecanum (4 wheeled), omni (3 wheeled), diff (2 wheeled)'),
 
         DeclareLaunchArgument(
             name='compose',

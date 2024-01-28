@@ -16,6 +16,7 @@ setup(
         (os.path.join('share', package_name, 'config'), glob('config/*.yaml')),
         (os.path.join('share', package_name, 'config', 'akros2_mecanum'), glob('config/akros2_mecanum/*.yaml')),
         (os.path.join('share', package_name, 'config', 'akros2_omni'), glob('config/akros2_omni/*.yaml')),
+        (os.path.join('share', package_name, 'config', 'akros2_diff'), glob('config/akros2_diff/*.yaml')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
