@@ -19,7 +19,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         Node(
-            package='akros2_drive',
+            package='akros2_teleop',
             executable='twist_mixer',
             name='twist_mixer',
             output='screen',

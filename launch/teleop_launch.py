@@ -23,9 +23,9 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     joy_launch_path = PathJoinSubstitution(
-        [FindPackageShare('akros2_drive'), 'launch', 'joy_launch.py'])
+        [FindPackageShare('akros2_teleop'), 'launch', 'joy_launch.py'])
 
-    joy_mode_config_dynamic_path = [get_package_share_directory('akros2_drive'),
+    joy_mode_config_dynamic_path = [get_package_share_directory('akros2_teleop'),
                                     '/config/joy/',
                                     LaunchConfiguration('joy_config'),
                                     '_mode_config.yaml']
@@ -42,7 +42,7 @@ def generate_launch_description():
 
         Node(
             condition=LaunchConfigurationNotEquals('joy_config', 'none'),
-            package='akros2_drive',
+            package='akros2_teleop',
             executable='joy_mode_handler',
             name='joy_mode_handler',
             output='screen',
