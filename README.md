@@ -1,7 +1,7 @@
 # akros2_base
 ROS2 package to run AKROS2 base nodes with different configurations - Mecanum Drive (4 wheeled), Omni-Wheel Drive (3 wheeled) and Differential Drive (2 wheeled). This package includes packages related to drivers, sensors, filters and fusion.
 
-## teleop_launch.py
+## twist_mixer_launch.py
 This launch file runs the ```twist_mixer``` executable by itself. Parameter and Topic remappings are done in the launch file and there are no launch arguments.
 
 ## teleop_launch.py
@@ -27,3 +27,6 @@ This launch file runs the [v4l2_camera](https://gitlab.com/boldhearts/ros2_v4l2_
 Launches the [micro-ROS agent](https://github.com/micro-ROS/micro-ROS-Agent) with the correct arguments based on the value of ```config```:
 
 * ```config```: Launches specific low-level control nodes based on the configs: ```mecanum```, ```omni```, ```diff``` (Default: ```mecanum```)
+
+## tof_imager_launch.py
+Launches the [tof_imager_ros](https://github.com/adityakamath/tof_imager_ros) package using the config file in ```config/akros2_diff/tof_imager_config.yaml``` as this sensor is currently only used on the differential drive robot. There are no arguments in this launch file.

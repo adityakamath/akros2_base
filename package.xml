@@ -30,6 +30,8 @@
 
   <depend>imu_tools</depend>
   <depend>robot_localization</depend>
+    
+  <depend>tof_imager_ros</depend>
 
   <export>
     <build_type>ament_python</build_type>
