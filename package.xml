@@ -18,7 +18,7 @@
   <depend>std_msgs</depend>
   <depend>akros2_msgs</depend>
 
-  <depend>akros2_drive</depend>
+  <depend>akros2_teleop</depend>
 
   <depend>laser_filters</depend>
   <depend>ldlidar</depend>
