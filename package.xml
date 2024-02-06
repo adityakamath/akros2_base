@@ -29,6 +29,7 @@
   <depend>micro_ros_agent</depend>
 
   <depend>imu_tools</depend>
+  <depend>imu_filter_madgwick</depend>
   <depend>robot_localization</depend>
     
   <depend>tof_imager_ros</depend>
