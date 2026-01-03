@@ -1,6 +1,7 @@
 # akros2_base
 ![](https://img.shields.io/badge/ROS%202%20Humble-Ubuntu%2022.04-blue) ![GitHub License](https://img.shields.io/github/license/adityakamath/akros2_base)
- ![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/kamathsblog)
+ [![Website](https://img.shields.io/badge/Website-kamathrobotics.com-blue)](https://kamathrobotics.com)
+![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/kamathsblog)
  
 ROS2 package to run AKROS2 base nodes with different configurations - Mecanum Drive (4 wheeled), Omni-Wheel Drive (3 wheeled) and Differential Drive (2 wheeled). This package includes packages related to drivers, sensors, filters and fusion.
 
